@@ -7,11 +7,6 @@ export const App = () => {
   const [nav, setNav] = useState(0);
   const [clicked, setClicked] = useState();
 
-
-
-
-
-
   const { days, dateDisplay } = useDate(nav);
 
   return(
@@ -38,13 +33,11 @@ export const App = () => {
             <Day
               key={index}
               day={d}
-              onClick={() => {
-                if (d.value !== 'padding') {
-                  setClicked(d.date);
-                }
-              }}
             />
           ))}
+        </div>
+        <div>
+          <button>Submit</button>
         </div>
       </div>
 
