@@ -9,6 +9,8 @@ export const App = () => {
 
   const { days, dateDisplay } = useDate(nav);
 
+  const { availableDays, setAvailableDays } = useState([])
+
   return(
     <>
       <div id="container">
@@ -37,7 +39,7 @@ export const App = () => {
           ))}
         </div>
         <div>
-          <button>Submit</button>
+          <button onClick={}>Submit</button>
         </div>
       </div>
 

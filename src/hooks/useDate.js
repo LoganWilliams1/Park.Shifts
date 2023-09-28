@@ -38,14 +38,14 @@ export const useDate = (nav) => {
       if (i > paddingDays) {
         daysArr.push({
           value: i - paddingDays,
-          isCurrentDay: i - paddingDays === day && nav === 0,
           date: dayString,
+          availability: true
         });
       } else {
         daysArr.push({
           value: 'padding',
-          isCurrentDay: false,
           date: '',
+          availability: false
         });
       }
     }

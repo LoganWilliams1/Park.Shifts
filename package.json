@@ -1,17 +1,19 @@
 {
-  "name": "react-calendar",
+  "name": "parkshifts",
   "version": "1.0.0",
-  "description": "Converting a vanilla JS app to React",
+  "description": "Scheduling app",
   "main": "index.js",
   "scripts": {
     "start": "snowpack dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Zackery Wilson",
+  "author": "Logan Williams",
   "license": "MIT",
   "dependencies": {
+    "axios": "^1.5.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "snowpack": "^3.2.2"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }
