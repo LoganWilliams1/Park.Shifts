@@ -3,7 +3,7 @@ import { CalendarHeader } from '../CalendarHeader';
 import { Day } from '../Day';
 import { useDate } from '../hooks/useDate';
 
-export const App = () => {
+export const Dashboard = () => {
   const [nav, setNav] = useState(0);
   const [clicked, setClicked] = useState();
 
@@ -48,3 +48,5 @@ export const App = () => {
     </>
   );
 };
+
+export default Dashboard.jsx;
