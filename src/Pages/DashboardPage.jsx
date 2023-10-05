@@ -3,7 +3,7 @@ import { CalendarHeader } from '../CalendarHeader';
 import { Day } from '../Day';
 import { useDate } from '../hooks/useDate';
 
-export const Dashboard = () => {
+export const DashboardPage = () => {
   const [nav, setNav] = useState(0);
   const [clicked, setClicked] = useState();
 
@@ -39,7 +39,7 @@ export const Dashboard = () => {
           ))}
         </div>
         <div>
-          <button onClick={}>Submit</button>
+          <button>Submit</button>
         </div>
       </div>
 
@@ -49,4 +49,4 @@ export const Dashboard = () => {
   );
 };
 
-export default Dashboard.jsx;
+export default DashboardPage.jsx;

@@ -2,22 +2,20 @@ import React, {useState} from "react";
 import httpClient from "../httpClient";
 import {useNavigate} from "react-router-dom";
 
-const LoginPage= () => {
+const RegisterPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate()
 
-    const logInUser = async () => {
-
+    const registerUser = async () => {
         try {
-            const resp = await httpClient.post("//localhost:5000/login", {
+            const resp = await httpClient.post("//localhost:5000/register", {
                 email,
                 password,
-
             });
 
+            navigate("/login")
 
-            navigate("/dashboard");
 
 
         } catch (error) {
@@ -25,14 +23,11 @@ const LoginPage= () => {
                 alert("Invalid credentials");
             }
         }
-
-
-
     };
 
     return (
         <div>
-            <h1>Log In</h1>
+            <h1>Create an account</h1>
             <form>
                 <div>
                     <label>Email: </label>
@@ -52,10 +47,10 @@ const LoginPage= () => {
                         id=""
                     />
                 </div>
-                <button type="button" onClick={() => logInUser()}>Submit</button>
+                <button type="button" onClick={() => registerUser()}>Submit</button>
             </form>
         </div>
     );
 };
 
-export default LoginPage;
+export default RegisterPage;
