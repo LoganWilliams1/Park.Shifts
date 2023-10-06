@@ -24,11 +24,12 @@ class Month(db.Model):
 
 
 class Day(db.Model):
+    __tablename__ = "days"
     id = db.Column(db.Integer, primary_key=True)
-    date_value = db.Column(db.Integer, nullable=False)
+    date_int = db.Column(db.Integer, nullable=False)
     month_id = db.Column(db.Integer, db.ForeignKey('months.id'))
     month = db.relationship('Month', backref='dates')
-    availability = db.Column(db.Boolean, nullable=False)
     shift_type = db.Column(db.String)
+    hours = db.Column(db.Integer)
 
 
