@@ -56,5 +56,11 @@ def login_user():
     })
 
 
+@app.route("/dashboard", methods=["POST", "GET"])
+def submit_availability():
+    availableDates = list(request.json["availableDates"])
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)

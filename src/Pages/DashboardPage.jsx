@@ -2,14 +2,32 @@ import React, { useState, useEffect } from 'react';
 import { CalendarHeader } from '../CalendarHeader';
 import { Day } from '../Day';
 import { useDate } from '../hooks/useDate';
+import httpClient from "../httpClient";
 
 export const DashboardPage = () => {
   const [nav, setNav] = useState(0);
-  const [clicked, setClicked] = useState();
+  const [availableDates, setAvailableDates] = useState([])
 
   const { days, dateDisplay } = useDate(nav);
 
-  const { availableDays, setAvailableDays } = useState([])
+  const getDates = () => {
+    const availableDates = []
+    for (let i = 0; i < days.length; i++) {
+      if (days[i].value() !== 'padding' && days[i].available) {
+        availableDates.push(days[i].value())
+      }
+    }
+
+    return availableDates
+  }
+
+  const submitHandler = async () => {
+    setAvailableDates(getDates)
+    await httpClient.post("//localhost:5000/dashboard", availableDates);
+  };
+
+
+
 
   return(
     <>
@@ -35,11 +53,12 @@ export const DashboardPage = () => {
             <Day
               key={index}
               day={d}
+
             />
           ))}
         </div>
         <div>
-          <button>Submit</button>
+          <button onClick={submitHandler}>Submit</button>
         </div>
       </div>
 

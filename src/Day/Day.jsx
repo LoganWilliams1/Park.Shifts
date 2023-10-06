@@ -10,11 +10,11 @@ export const Day = ({ day, onClick }) => {
   const clickHandler = () => {
     if (dayVals.dayColor === 'white') {
       setDayVals({...dayVals, dayColor: '#d36c6c', dayText: 'UNAVAILABLE'});
-      day.availability = false;
+      day.available = false;
     }
     else {
       setDayVals({...dayVals, dayColor: 'white', dayText: ''});
-      day.availability = true;
+      day.available = true;
     }
   }
 

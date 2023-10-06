@@ -39,13 +39,13 @@ export const useDate = (nav) => {
         daysArr.push({
           value: i - paddingDays,
           date: dayString,
-          availability: true
+          available: true
         });
       } else {
         daysArr.push({
           value: 'padding',
           date: '',
-          availability: false
+          available: false
         });
       }
     }

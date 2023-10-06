@@ -16,7 +16,7 @@ const LandingPage = () => {
                 const resp = await httpClient.get("//localhost:5000/");
                 setUser(resp.data);
             } catch (error) {
-                alert("Not authenticated");
+
             }
         })();
     }, []);
