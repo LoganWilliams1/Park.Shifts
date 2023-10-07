@@ -16,8 +16,13 @@ const LoginPage= () => {
 
             });
 
+            if (resp.data === "user") {
+                navigate("/dashboard")
+            }
 
-            navigate("/dashboard");
+            if (resp.data === "manager") {
+                navigate("/manager-dashboard")
+            }
 
 
         } catch (error) {

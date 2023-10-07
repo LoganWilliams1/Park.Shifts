@@ -40,6 +40,8 @@ const LandingPage = () => {
 
                         <Link to="/register">Register</Link>
 
+                        <Link to="/register-team">Register as Team Manager</Link>
+
                     </div>
                 </div>
             )}

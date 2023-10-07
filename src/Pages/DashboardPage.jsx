@@ -13,8 +13,8 @@ export const DashboardPage = () => {
   const getDates = () => {
     const availableDates = []
     for (let i = 0; i < days.length; i++) {
-      if (days[i].value() !== 'padding' && days[i].available) {
-        availableDates.push(days[i].value())
+      if (days[i].value !== 'padding' && days[i].available) {
+        availableDates.push(days[i].value)
       }
     }
 
@@ -23,7 +23,7 @@ export const DashboardPage = () => {
 
   const submitHandler = async () => {
     setAvailableDates(getDates)
-    await httpClient.post("//localhost:5000/dashboard", availableDates);
+    await httpClient.post("//localhost:5000/dashboard", {"availableDates": availableDates});
   };
 
 
