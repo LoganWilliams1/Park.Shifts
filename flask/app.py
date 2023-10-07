@@ -36,6 +36,12 @@ def register_user():
     })
 
 
+@app.route("/registerteam", methods=["POST"])
+def register_team():
+
+
+
+
 @app.route("/login", methods=["POST", "GET"])
 def login_user():
     email = request.json["email"]
