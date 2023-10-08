@@ -6,11 +6,10 @@ import LandingPage from "./Pages/LandingPage";
 import RegisterPage from "./Pages/RegisterPage";
 import {DashboardPage} from "./Pages/DashboardPage";
 import RegisterTeamPage from "./Pages/RegisterTeamPage";
+import ManagerDashboardPage from "./Pages/ManagerDashboardPage";
 
 
-function ManagerDashboardPage() {
-    return null;
-}
+
 
 const Router = () => {
     return (

@@ -10,7 +10,7 @@ const RegisterTeamPage = () => {
 
     const registerTeam = async () => {
         try {
-            const resp = await httpClient.post("//localhost:5000/registerteam", {
+            const resp = await httpClient.post("//localhost:5000/register-team", {
                 email,
                 password,
                 teamName

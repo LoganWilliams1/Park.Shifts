@@ -41,7 +41,7 @@ def register_user():
 def register_team():
     email = request.json["email"]
     password = request.json["password"]
-    team = request.json["team"]
+    team = request.json["teamName"]
 
     manager_exists = Manager.query.filter_by(email=email).first() is not None
 
