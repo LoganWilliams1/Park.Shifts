@@ -5,15 +5,19 @@ import {useNavigate} from "react-router-dom";
 const RegisterTeamPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [teamName, setTeamName] = useState("")
-    const navigate = useNavigate()
+    const [teamName, setTeamName] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const navigate = useNavigate();
 
     const registerTeam = async () => {
         try {
             const resp = await httpClient.post("//localhost:5000/register-team", {
                 email,
                 password,
-                teamName
+                teamName,
+                firstName,
+                lastName
             });
 
             navigate("/login")
@@ -32,11 +36,20 @@ const RegisterTeamPage = () => {
             <h1>Create an account</h1>
             <form>
                 <div>
-                    <label>Team Name: </label>
+                    <label>First Name: </label>
                     <input
                         type="text"
-                        value={teamName}
-                        onChange={(e) => setTeamName(e.target.value)}
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        id=""
+                    />
+                </div>
+                <div>
+                    <label>Last Name: </label>
+                    <input
+                        type="text"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
                         id=""
                     />
                 </div>
@@ -55,6 +68,15 @@ const RegisterTeamPage = () => {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        id=""
+                    />
+                </div>
+                <div>
+                    <label>Team Name: </label>
+                    <input
+                        type="text"
+                        value={teamName}
+                        onChange={(e) => setTeamName(e.target.value)}
                         id=""
                     />
                 </div>

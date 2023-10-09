@@ -5,13 +5,17 @@ import {useNavigate} from "react-router-dom";
 const RegisterPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate()
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const navigate = useNavigate();
 
     const registerUser = async () => {
         try {
             const resp = await httpClient.post("//localhost:5000/register", {
                 email,
                 password,
+                firstName,
+                lastName
             });
 
             navigate("/login")
@@ -29,6 +33,24 @@ const RegisterPage = () => {
         <div>
             <h1>Create an account</h1>
             <form>
+                <div>
+                    <label>First Name: </label>
+                    <input
+                        type="text"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        id=""
+                    />
+                </div>
+                <div>
+                    <label>Last Name: </label>
+                    <input
+                        type="text"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        id=""
+                    />
+                </div>
                 <div>
                     <label>Email: </label>
                     <input

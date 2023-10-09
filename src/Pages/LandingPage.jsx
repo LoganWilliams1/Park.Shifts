@@ -35,11 +35,12 @@ const LandingPage = () => {
                 <div>
                     <p>You are not logged in</p>
                     <div>
-
                         <Link to="/login">Login</Link>
-
+                    </div>
+                    <div>
                         <Link to="/register">Register</Link>
-
+                    </div>
+                    <div>
                         <Link to="/register-team">Register as Team Manager</Link>
 
                     </div>

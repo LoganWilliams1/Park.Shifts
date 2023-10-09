@@ -20,6 +20,8 @@ class Manager(db.Model):
     id = db.Column(db.String(32), primary_key=True, unique=True, default=get_uuid)
     email = db.Column(db.String(345), unique=True, nullable=False)
     password = db.Column(db.Text, nullable=False)
+    first_name = db.Column(db.String(50), nullable=False)
+    last_name = db.Column(db.String(50), nullable=False)
     team_id = db.Column(db.Integer, db.ForeignKey('teams.id'))
     team = db.relationship('Team', uselist=False, back_populates='manager')
 
@@ -29,6 +31,8 @@ class User(db.Model):
     id = db.Column(db.String(32), primary_key=True, unique=True, default=get_uuid)
     email = db.Column(db.String(345), unique=True, nullable=False)
     password = db.Column(db.Text, nullable=False)
+    first_name = db.Column(db.String(50), nullable=False)
+    last_name = db.Column(db.String(50), nullable=False)
     team_id = db.Column(db.Integer, db.ForeignKey('teams.id'))
     team = db.relationship('Team', backref='users')
 

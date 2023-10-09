@@ -23,7 +23,11 @@ export const DashboardPage = () => {
 
   const submitHandler = async () => {
     setAvailableDates(getDates)
-    await httpClient.post("//localhost:5000/dashboard", {"availableDates": availableDates});
+    try {
+      await httpClient.post("//localhost:5000/dashboard", {"availableDates": availableDates});
+    } catch (error) {
+      alert("Error: Submit Failed")
+    }
   };
 
 

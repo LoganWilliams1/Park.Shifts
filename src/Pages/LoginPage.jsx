@@ -10,17 +10,17 @@ const LoginPage= () => {
     const logInUser = async () => {
 
         try {
-            const resp = await httpClient.post("//localhost:5000/login", {
+            const response = await httpClient.post("//localhost:5000/login", {
                 email,
                 password,
 
             });
 
-            if (resp.data === "user") {
+            if (response.data === "user") {
                 navigate("/dashboard")
             }
 
-            if (resp.data === "manager") {
+            if (response.data === "manager") {
                 navigate("/manager-dashboard")
             }
 
@@ -45,7 +45,6 @@ const LoginPage= () => {
                         type="text"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        id=""
                     />
                 </div>
                 <div>
@@ -54,7 +53,6 @@ const LoginPage= () => {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        id=""
                     />
                 </div>
                 <button type="button" onClick={() => logInUser()}>Submit</button>
