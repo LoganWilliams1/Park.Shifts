@@ -10,7 +10,9 @@
   "author": "Logan Williams",
   "license": "MIT",
   "dependencies": {
+    "@handsontable/react": "^13.1.0",
     "axios": "^1.5.1",
+    "handsontable": "^13.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",
