@@ -11,7 +11,9 @@ const ScheduleSpreadsheet = ({availabilityTable}) => {
     const days = ['S', 'M', 'T', 'W', 'TH', 'F', 'S'];
 
     const[availability, setAvailability] = useState({});
-    const[grid, updateGrid] = useState(() => {
+    const[grid, updateGrid] = useState([[]]);
+
+    function initializeGrid() {
         const initialGrid = Array.from({length: 50},
             () => Array.from({length: 40}, () => ''))
 
@@ -29,15 +31,16 @@ const ScheduleSpreadsheet = ({availabilityTable}) => {
             initialGrid[1][i] = days[(monthInfo.nextMonthFirstDay + (i - 1)) % 7]
         }
 
+        console.log(availability)
         const teamMembers = Object.keys(availability);
-        console.log(teamMembers)
+
         for (let i = 0; i < teamMembers.length; i++) {
             const memberName = teamMembers[i];
             initialGrid[i + 3][0] = memberName;
         }
 
         return initialGrid;
-    })
+    }
 
     function getMonthInfo() {
         const currentDate = new Date();
@@ -65,14 +68,21 @@ const ScheduleSpreadsheet = ({availabilityTable}) => {
         async function getAvailability() {
             try {
                 const response = await httpClient.get("//localhost:5000/get-availability");
-                setAvailability(response.data)
-                updateGrid(
+                console.log(response.data);
+                setAvailability(response.data);
+
             } catch (error) {
                 alert("Error: Retrieval Failed")
             }
+
         }
+        getAvailability();
 
     }, []);
+
+    useEffect(() => {
+        updateGrid(initializeGrid)
+    }, [availability]);
 
 
     return (

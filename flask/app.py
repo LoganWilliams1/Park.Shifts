@@ -128,7 +128,7 @@ def get_availability():
     team_availability = {}
 
     for user in users:
-        name = user.first_name + user.last_name
+        name = user.first_name + " " + user.last_name
         user_month = Month.query.filter_by(month_name=next_month, user_id=user.id).first()
         if user_month is None:
             team_availability[name] = -1
