@@ -1,9 +1,5 @@
-body {
-  display: flex;
-  margin-top: 50px;
-  justify-content: center;
-  background-color: #FFFCFF;
-}
+
+
 button {
   margin-right: 2.5px;
   margin-left: 2.5px;
@@ -86,4 +82,27 @@ button {
   box-shadow: none !important;
 }
 
+.managerDash {
+  display: grid;
+  grid-template-areas:
+    "topbar topbar topbar"
+    "sideBar spreadsheet hours"
+    "footer footer footer";
+  grid-template-rows: 1fr 8fr 1fr;
+  grid-template-columns: 1fr 8fr 1fr;
+  justify-items: center;
+}
 
+.spreadSheetContainer {
+  grid-area: spreadsheet;
+  height: 100vh;
+  width: 100%;
+}
+
+.sideBarContainer {
+  grid-area: sideBar;
+}
+
+td.custom-cell {
+  background-color: #d36c6c;
+}

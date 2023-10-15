@@ -1,3 +1,5 @@
+from time import sleep
+
 from flask import Flask, request, jsonify, session
 from flask_bcrypt import Bcrypt
 from flask_session import Session
@@ -104,12 +106,15 @@ def submit_availability():
         new_month = Month(month_name=next_month, user_id=current_user_id)
         db.session.add(new_month)
         db.session.commit()
+        sleep(5)
 
     next_month_id = Month.query.filter_by(user_id=current_user_id, month_name=next_month).first().id
 
-    available_dates = request.json.get("availableDates", [])
-    for i in available_dates:
-        new_day = Day(date_int=i, month_id=next_month_id)
+    available_dates = request.json["availableDates"]
+    print(available_dates)
+
+    for i in available_dates.keys():
+        new_day = Day(date_int=i, available=available_dates[i], month_id=next_month_id)
         db.session.add(new_day)
         db.session.commit()
 
@@ -135,9 +140,9 @@ def get_availability():
         else:
             user_days = Day.query.filter_by(month_id=user_month.id).all()
 
-            available_days = []
+            available_days = {}
             for day in user_days:
-                available_days.append(day.date_int)
+                available_days[day.date_int] = day.available
 
             team_availability[name] = available_days
 

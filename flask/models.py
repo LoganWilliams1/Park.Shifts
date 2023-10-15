@@ -51,5 +51,6 @@ class Day(db.Model):
     date_int = db.Column(db.Integer, nullable=False)
     month_id = db.Column(db.Integer, db.ForeignKey('months.id'))
     month = db.relationship('Month', backref='dates')
+    available = db.Column(db.Boolean, nullable=False)
     shift_type = db.Column(db.String)
     hours = db.Column(db.Integer)

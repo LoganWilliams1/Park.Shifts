@@ -21,20 +21,21 @@ const ManagerDashboardPage = () => {
 
 
     return (
-        <div>
+        <div className="managerDash">
             <ScheduleSpreadsheet />
-            <form>
-                <label>Enter Email: </label>
-                <input
-                    type="text"
-                    value={newUser}
-                    onChange={(e) => setNewUser(e.target.value)}
-                    id=""
-                />
-                <button type="button" onClick={() => addUser()}>Add User</button>
-            </form>
-
-
+            <div className="sideBarContainer">
+                <button>Export</button>
+                <form>
+                    <label>Add New User Email: </label>
+                    <input
+                        type="text"
+                        value={newUser}
+                        onChange={(e) => setNewUser(e.target.value)}
+                        id=""
+                    />
+                    <button type="button" onClick={() => addUser()}>Add User</button>
+                </form>
+            </div>
         </div>
 
 

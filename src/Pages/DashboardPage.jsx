@@ -6,17 +6,18 @@ import httpClient from "../httpClient";
 
 export const DashboardPage = () => {
   const [nav, setNav] = useState(0);
-  const [availableDates, setAvailableDates] = useState([])
+  const [availableDates, setAvailableDates] = useState({})
 
   const { days, dateDisplay } = useDate(nav);
 
   const getDates = () => {
-    const availableDates = []
+    const availableDates = {}
     for (let i = 0; i < days.length; i++) {
-      if (days[i].value !== 'padding' && days[i].available) {
-        availableDates.push(days[i].value)
+      if (days[i].value !== 'padding') {
+        availableDates[days[i].value] = days[i].available;
       }
     }
+    console.log(availableDates)
 
     return availableDates
   }
@@ -24,7 +25,7 @@ export const DashboardPage = () => {
   const submitHandler = async () => {
     setAvailableDates(getDates)
     try {
-      await httpClient.post("//localhost:5000/dashboard", {"availableDates": availableDates});
+      await httpClient.post("//localhost:5000/dashboard", {availableDates});
     } catch (error) {
       alert("Error: Submit Failed")
     }

@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import Handsontable from 'handsontable/base';
 import { HotTable } from '@handsontable/react'
-import 'handsontable/dist/handsontable.full.min.css';
+import 'handsontable/dist/handsontable.full.css';
 import httpClient from "../httpClient";
+import { registerAllModules } from 'handsontable/registry';
+import {textRenderer} from "handsontable/renderers";
 
 const ScheduleSpreadsheet = ({availabilityTable}) => {
 
@@ -37,9 +39,22 @@ const ScheduleSpreadsheet = ({availabilityTable}) => {
         for (let i = 0; i < teamMembers.length; i++) {
             const memberName = teamMembers[i];
             initialGrid[i + 3][0] = memberName;
+            const days = availability[memberName];
+            const dates = Object.keys(days);
+            for (let j = 0; j < dates.length; j++) {
+                const day = dates[j];
+                initialGrid[i + 3][j + 1] = days[day] === true ? '\\' : 'x';
+            }
+
+
         }
 
         return initialGrid;
+    }
+
+    function unavailableRenderer(instance, td, row, col, prop, value, cellProperties) {
+        textRenderer.apply(this, arguments);
+        td.style.background = '#d36c6c'
     }
 
     function getMonthInfo() {
@@ -87,18 +102,29 @@ const ScheduleSpreadsheet = ({availabilityTable}) => {
 
     return (
 
-        <div>
-            <div>
+        <div className="spreadSheetContainer">
                 <HotTable
                     data={grid}
-                    height="auto"
-                    width="auto"
+                    height={'100%'}
+                    width={'100%'}
+                    rowHeights={20}
+                    colWidths={(index) => {
+                        return (index === 0 ? 100 : 30);
+                    }}
+                    cells={function(row, col) {
+                        const cellProperties = {};
+                        const data = this.instance.getData();
+                        if (data[row][col] === 'x') {
+                            cellProperties.renderer = unavailableRenderer;
+                        }
+                        return cellProperties;
+
+                    }}
+
+
+
                     licenseKey="non-commercial-and-evaluation"
                 />
-            </div>
-            <div>
-                <button>Export</button>
-            </div>
         </div>
 
 
