@@ -6,7 +6,7 @@ import httpClient from "../httpClient";
 import { registerAllModules } from 'handsontable/registry';
 import {textRenderer} from "handsontable/renderers";
 
-const ScheduleSpreadsheet = ({availabilityTable}) => {
+const ScheduleSpreadsheet = () => {
 
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
         'October', 'November', 'December'];
